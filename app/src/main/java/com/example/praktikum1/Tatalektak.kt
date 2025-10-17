@@ -3,6 +3,7 @@ package com.example.praktikum1
 import android.text.Layout
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,16 +14,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.AlignmentLine
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -107,26 +112,64 @@ fun TataletakBoxColumnRow(modifier: Modifier){
         Box(
             modifier = modifier
                 .fillMaxWidth()
-                .height(height = 110.dp)
-                .background(color = Color.Yellow),
+                .height(110.dp)
+                .background(Color.Yellow)
+                .padding(horizontal = 12.dp, vertical = 8.dp),
             contentAlignment = Alignment.Center
-        ){
-            Column (){
-                Row (
-                    modifier = modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ){
-                    Text(text = "Col1_Row1_Komponen1")
-                    Text(text = "Col1_Row1_Komponen2")
-                    Text(text = "Col1_Row1_Komponen3")
-                }
+        ) {
+            Column {
                 Row(
                     modifier = modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceEvenly
-                ){
-                    Text(text = "Col1_Row2_Komponen1")
-                    Text(text = "Col1_Row2_Komponen2")
-                    Text(text = "Col1_Row2_Komponen3")
+                ) {
+                    Text(
+                        text = "Col1_Row1_Komponen1",
+                        modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Text(
+                        text = "Col1_Row1_Komponen2",
+                        modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Text(
+                        text = "Col1_Row1_Komponen3",
+                        modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+
+                Row(
+                    modifier = modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Text(
+                        text = "Col1_Row2_Komponen1",
+                        modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Text(
+                        text = "Col1_Row2_Komponen2",
+                        modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Text(
+                        text = "Col1_Row2_Komponen3",
+                        modifier = Modifier.weight(1f),
+                        textAlign = TextAlign.Center,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
                 }
             }
         }
@@ -135,20 +178,28 @@ fun TataletakBoxColumnRow(modifier: Modifier){
             modifier = modifier
                 .fillMaxWidth()
                 .height(300.dp)
-                .background(Color.Cyan),
+                .padding(horizontal = 16.dp) // ✅ tambahan padding kiri/kanan
+                .clip(RoundedCornerShape(16.dp)) // ✅ sudut membulat
+                .border(1.dp, Color(0xFFE0E0E0), RoundedCornerShape(16.dp)) // ✅ border tipis
+                .background(Color(0xFFEFF3F6)), // ✅ warna netral lebih enak dilihat
             contentAlignment = Alignment.Center
         ) {
-            Image(painter = gambar,
-                contentDescription = null,
-                contentScale = ContentScale.Fit)
-            Text(text = "My Music",
+            Image(
+                painter = gambar,
+                contentDescription = "Gambar musik",
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop // ✅ ganti agar proporsional
+            )
+            Text(
+                text = "My Music",
                 fontSize = 50.sp,
                 color = Color.Red,
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily.Cursive,
-                modifier = Modifier.align(
-                    alignment = Alignment.Center))
+                modifier = Modifier.align(Alignment.Center) // ✅ pastikan center
+            )
         }
+
     }
 }
 

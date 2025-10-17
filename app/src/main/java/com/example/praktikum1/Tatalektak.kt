@@ -1,8 +1,10 @@
 package com.example.praktikum1
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -32,5 +34,21 @@ fun TataletakRow(modifier: Modifier) {
         Text(text = "Komponen2")
         Text(text = "Komponen3")
         Text(text = "Komponen4")
+    }
+}
+
+@Composable
+fun TataletakBox(modifier: Modifier){
+    Box(
+        modifier = modifier
+            .fillMaxHeight()
+            .fillMaxWidth(), contentAlignment = Alignment.Center
+    ) {
+        Text(text = "Box 1")
+        Text(text = "Column 1")
+        Text(text = "Row 1")
+        Text(text = "Box 1")
+        Text(text = "Box 2")
+        Text(text = "Column 2")
     }
 }

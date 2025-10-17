@@ -18,12 +18,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.AlignmentLine
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+
 
 @Composable
 fun TataletakColumn(modifier: Modifier) {
@@ -37,8 +39,7 @@ fun TataletakColumn(modifier: Modifier) {
 
 @Composable
 fun TataletakRow(modifier: Modifier) {
-    Row(
-        modifier = modifier.fillMaxWidth(),
+    Row(modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         Text(text = "Komponen1")
@@ -58,7 +59,6 @@ fun TataletakBox(modifier: Modifier){
         Text(text = "Box 1")
         Text(text = "Column 1")
         Text(text = "Row 1")
-        Text(text = "Box 1")
         Text(text = "Box 2")
         Text(text = "Column 2")
     }
@@ -100,10 +100,9 @@ fun TataletakRowColumn(modifier: Modifier){
         }
     }
 }
-
 @Composable
-fun TataletakBoxColumn(modifier: Modifier){
-    val gambar = painterResource(id = R.drawable.notasibalok)
+fun TataletakBoxColumnRow(modifier: Modifier){
+    val gambar = painterResource(id = R.drawable.ryan)
     Column {
         Box(
             modifier = modifier
@@ -139,20 +138,16 @@ fun TataletakBoxColumn(modifier: Modifier){
                 .background(Color.Cyan),
             contentAlignment = Alignment.Center
         ) {
-            Image(
-                painter = gambar,
-                contentDescription = "Gambar musik", // lebih baik untuk aksesibilitas
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop
-            )
-            Text(
-                text = "My Music",
+            Image(painter = gambar,
+                contentDescription = null,
+                contentScale = ContentScale.Fit)
+            Text(text = "My Music",
                 fontSize = 50.sp,
                 color = Color.Red,
                 fontWeight = FontWeight.Bold,
-                fontFamily = FontFamily.Cursive
-                // align() tidak perlu karena contentAlignment sudah Center
-            )
+                fontFamily = FontFamily.Cursive,
+                modifier = Modifier.align(
+                    alignment = Alignment.Center))
         }
     }
 }
